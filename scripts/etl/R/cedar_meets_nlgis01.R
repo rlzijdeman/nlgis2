@@ -4,7 +4,15 @@
 # Purpose: see whether you can retrieve data from CEDAR's SPARQLE endpoint and
 #          plot them on map retrieved from NLGIS-2 API.
 # Note: DATA SHOULD NOT BE INTERPRETED SUBSTANTIVELY (for debugging purposes only)
-# Laste change: -
+# Laste change: 
+### 2014-10-19: Restricted query to specific call
+
+# clean workspace
+rm(list=ls())
+dev.off()
+
+# set working directory
+setwd("/Users/richard/tmp/")
 
 # load packages
 library(SPARQL)
@@ -18,6 +26,7 @@ endpoint <- "http://lod.cedar-project.nl/cedar/sparql"
 sparql_prefix <- 
   "prefix qb: <http://purl.org/linked-data/cube#>
    prefix cedar: <http://lod.cedar-project.nl:8888/cedar/resource/>
+   prefix cedarterms: <http://bit.ly/cedar#>
    prefix maritalstatus: <http://bit.ly/cedar-maritalstatus#>
    prefix sdmx-dimension: <http://purl.org/linked-data/sdmx/2009/dimension#>
    prefix sdmx-code: <http://purl.org/linked-data/sdmx/2009/code#>"
@@ -30,6 +39,17 @@ query <- paste(sparql_prefix, "select * where {
   ?slice sdmx-dimension:refPeriod ?year .
   ?obs sdmx-dimension:refArea ?muni .
 }") 
+
+query2 <- paste(sparql_prefix, 'select * where {
+  ?obs a qb:Observation .
+  ?obs cedar:population ?pop .
+  ?obs sdmx-dimension:sex sdmx-code:sex-V .
+  ?slice a qb:Slice .
+  ?slice sdmx-dimension:refPeriod ?year .
+  ?slice cedarterms:censusType "VT" .
+  ?obs sdmx-dimension:refArea ?muni .
+}')
+# note the use of single quotes for VT, within double quotes
 
 res <- SPARQL(endpoint,query)$results
 res.sub <- subset(res,year==1920)

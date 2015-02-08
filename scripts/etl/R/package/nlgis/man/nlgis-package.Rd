@@ -35,5 +35,5 @@ test3 <- nlg.get(code = "TXCU", amco = 11150) # TXCU variable for all years, but
 
 # Example to plot data
 temp.data <- nlg.get(code = "BEV3", year = "1890") # retrieven population data for 1890
-nlg.map(temp.data, 1890, "bev3_1890") # plot data (note: warning for removing duplicates)
+nlg.map(temp.data, 1890, "Population") # plot data (note: warning for removing duplicates)
 }

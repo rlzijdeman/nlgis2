@@ -49,7 +49,7 @@ Richard L. Zijdeman
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-# Example to plot data
+# Example to plot data 
 temp.data <- nlg.get(code = "BEV3", year = "1890") # retrieve population data for 1890
 nlg.map(temp.data, 1890, "Population") # plot data (note: warning for removing duplicates)
 }

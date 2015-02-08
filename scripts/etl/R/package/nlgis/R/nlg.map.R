@@ -30,8 +30,8 @@ nlg.map <- function(df, year, filename,
   # overwrite map@data with merged data.frame
   map@data <- temp
   rm(temp)
-  writeOGR(map, paste("./","_map.geojson", sep = filename), layer = "", 
-           driver='GeoJSON')
+  mapgeo <- toGeoJSON(data = map, dest = "./", name = paste0(paste0(filename, year), "Map"))
+  
   cuts.default <- seq(round(min(map@data$value, na.rm = TRUE),0), 
                       round(max(map@data$value, na.rm = TRUE),0), 
                       length=8)
@@ -39,7 +39,7 @@ nlg.map <- function(df, year, filename,
   sty<-styleGrad(prop="value", breaks=cuts, right=FALSE, style.par="col",
                  style.val=rev(heat.colors(8)), 
                  leg=paste(filename,year,sep = " "), lwd=1)
-  lfmap <- leaflet(paste("./","_map.geojson", sep = filename), 
+  lfmap <- leaflet(mapgeo, 
                    incl.data = TRUE, 
                    popup=popup, 
                    style = sty, base.map = "mqsat")

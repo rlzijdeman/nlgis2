@@ -50,8 +50,8 @@ Richard L. Zijdeman
 }
 \examples{
 # Example to plot data
-temp.data <- nlg.get(code = "BEV3", year = "1890") # retrieven population data for 1890
-nlg.map(temp.data, 1890, "bev3_1890") # plot data (note: warning for removing duplicates)
+temp.data <- nlg.get(code = "BEV3", year = "1890") # retrieve population data for 1890
+nlg.map(temp.data, 1890, "Population") # plot data (note: warning for removing duplicates)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

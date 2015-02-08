@@ -1,4 +1,4 @@
 importFrom(jsonlite, fromJSON)
 importFrom(rgdal, readOGR, writeOGR)
-importFrom(leafletR, leaflet, styleGrad)
+importFrom(leafletR, leaflet, styleGrad,toGeoJSON)
 export(nlg.get, nlg.map)

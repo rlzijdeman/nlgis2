@@ -37,7 +37,7 @@ nlg.map <- function(df, year, filename,
                       length=8)
   popup<-c("name", "amsterdamcode", "value")
   sty<-styleGrad(prop="value", breaks=cuts, right=FALSE, style.par="col",
-                 style.val=rev(heat.colors(8)), 
+                 style.val=rev(heat.colors(7)), 
                  leg=paste(filename,year,sep = " "), lwd=1)
   lfmap <- leaflet(mapgeo, 
                    incl.data = TRUE, 

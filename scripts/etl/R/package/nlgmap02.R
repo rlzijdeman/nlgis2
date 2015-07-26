@@ -7,7 +7,7 @@ nlgmap <- function(df, year, filename,
   # get map
   destfile = paste0(filename, ".geojson")
   download.file(
-    paste("http://node-128.dev.socialhistoryservices.org/api/maps?year=", 
+    paste("http://nlgis.nl/api/maps?year=", 
           "&format=geojson", sep = as.character(year)),
     destfile = destfile)
   

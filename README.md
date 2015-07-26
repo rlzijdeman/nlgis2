@@ -19,4 +19,4 @@ To download data and map it, for example 1890 population data, run:
 temp.data <- nlg.get(code = "BEV3", year = "1890") # retrieve population data for 1890
 nlg.map(temp.data, 1890, "Population") # plot data (note: warning for removing duplicates)
 ```
-The map is scalable and 'on-click' provides name, municipality code and 'value', here population size
+The map is scalable and 'on-click' provides name, municipality code and 'value', here population size.

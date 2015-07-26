@@ -7,9 +7,16 @@ The nlgis2 project is made possible by a Dans Small Data Project grant [http://w
 ## R
 In addition to the NLGIS website [http://nlgis.nl](http://nlgis.nl), the data and maps are accessible through an API. For R there's also a convenience package to connect to the API and plot data on the map. To install the package:
 ```{r}
-    install.packages("devtools")  
-    library(devtools)  
-    install_github("rlzijdeman/nlgis2", subdir = "/scripts/etl/R/package/nlgis")  
-    library(nlgis)
-    ?nlgis # To check the documentation
+install.packages("devtools")  
+library(devtools)  
+install_github("rlzijdeman/nlgis2", subdir = "/scripts/etl/R/package/nlgis")  
+library(rgdal) # required package
+library(leafletR) # required package
+library(nlgis)
 ```
+To download data and map it, for example 1890 population data, run:
+```{r}
+temp.data <- nlg.get(code = "BEV3", year = "1890") # retrieve population data for 1890
+nlg.map(temp.data, 1890, "Population") # plot data (note: warning for removing duplicates)
+```
+The map is scalable and 'on-click' provides name, municipality code and 'value', here population size

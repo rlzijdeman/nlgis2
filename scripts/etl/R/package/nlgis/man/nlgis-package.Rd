@@ -28,12 +28,26 @@ http://nlgis.nl}
 \seealso{
 }
 \examples{
-# Examples to retrieve data
+# installation and loading required packages
+install.packages("devtools")  
+library(devtools)  
+install_github("rlzijdeman/nlgis2", subdir = "/scripts/etl/R/package/nlgis")  
+library(rgdal) # required package
+library(leafletR) # required package
+library(nlgis)
+
+# retrieve data and plot it
+temp.data <- nlg.get(code = "BEV3", year = "1890") # retrieven population data for 1890
+nlg.map(temp.data, 1890, "Population") # plot data (note: warning for removing duplicates)
+# the map is scalable and 'on-click' provides name, municipality code and 'value', here population size
+
+
+# Further examples to retrieve data
 test1 <- nlg.get(amco = 11150, year = 1982) # all variables for Amsterdam in 1982
 test2 <- nlg.get(code = "TXCU") # all years and municipalities for TXCU variable
 test3 <- nlg.get(code = "TXCU", amco = 11150) # TXCU variable for all years, but just Amsterdam
 
-# Example to plot data
-temp.data <- nlg.get(code = "BEV3", year = "1890") # retrieven population data for 1890
+# Further examples to plot data
+temp.data <- nlg.get(code = "BEV3", year = "1890") # retrieve population data for 1890
 nlg.map(temp.data, 1890, "Population") # plot data (note: warning for removing duplicates)
 }
